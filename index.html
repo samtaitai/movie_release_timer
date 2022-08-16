@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>She Hulk Release Countdown</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/default.css" />
+        
+    </head>
+    <body style="background-color: black">
+        <div class="container-fluid">
+            <div class="rows">
+                <img width= 60% src="https://nerdreactor.com/wp-content/uploads/2019/08/she-hulk-disney-plus-logo.jpg" class="mx-auto d-block" alt="she-hulk-logo">
+                <div class="col-md-12 mt-0 mb-5 text-center">
+                    <h1 id="timer" style="color: white"></h1>
+                    <h1 id="release" style="color: green"></h1>
+                </div>
+            </div>
+        </div>
+        <footer class="fixed-bottom">
+            <div class="text-center p-3" style="background-color: green">
+                <p>
+                    <small>I claim nothing for She-Hulk. Marvel has the copyright.
+                    This site is just a showing of my affection for the show.</small>
+                </p>
+            </div>
+        </footer>
+
+        <script>
+
+            const releaseDate = new Date("Aug 18, 2022 00:00:00").getTime();
+       
+            let counter = setInterval(function(){
+                
+                let now = new Date().getTime();
+                let delta = releaseDate - now; 
+                
+                if (delta >= 0) {
+                    let days = Math.trunc(delta/(1000*60*60*24));
+                    let hours = Math.trunc((delta % (1000*60*60*24))/(1000*60*60));
+                    let mins = Math.trunc((delta % (1000*60*60))/(1000*60));
+                    let secs = Math.trunc((delta % (1000*60))/1000);
+
+                    document.getElementById("timer").innerHTML =  
+                    days + " Days " + hours + " Hours " + mins + " Mins " + secs + " Secs left."; 
+
+                }else {
+                    clearInterval(counter);
+                    document.getElementById("release").innerHTML = "Everybody GO GREEN!";
+                }
+                 
+            }, 1000);
+
+        </script>
+
+    </body>
+</html>
+
